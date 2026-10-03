@@ -1,1 +1,1 @@
-export { default, links, meta, Layout, ErrorBoundary } from "./app/root";
+export { default, meta, Layout, ErrorBoundary } from "./app/root";

@@ -10,8 +10,8 @@ export default [
   layout("pages/chats/ui/ChatsLayout.tsx", [
     route("chats", "pages/chats/ui/ChatsPage.tsx"),
   ]),
-  layout("pages/sign-in/layout.tsx", [
-    route("sign-in", "pages/sign-in/index.tsx"),
+  layout("pages/sign-in/ui/SignInLayout.tsx", [
+    route("sign-in", "pages/sign-in/ui/SignInPage.tsx"),
   ]),
   route("*", "pages/not-found/NotFound.tsx"),
 ] satisfies RouteConfig;

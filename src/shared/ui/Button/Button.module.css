@@ -1,0 +1,18 @@
+.button {
+    border-radius: 8px;
+    color: #007aff;
+    font-weight: bold;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    padding: 8px 10px;
+}
+
+.button:hover {
+    background-color: #e7e7e70a;
+}
+
+
+.button:active {
+    background-color: #e7e7e714;
+}

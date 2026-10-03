@@ -7,7 +7,7 @@ export default function AuthLayout() {
   const authContext = useContext(AuthContext);
 
   if (authContext.idInstance) {
-    return <Navigate to="/main" replace />;
+    return <Navigate to="/chats" replace />;
   }
 
   return <Outlet />;

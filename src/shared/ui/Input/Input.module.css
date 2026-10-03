@@ -1,0 +1,21 @@
+.input {
+  border-radius: 8px;
+  border: 2px solid #ffffff1a;
+  color: white;
+  padding: 6px 10px;
+  background-color: transparent;
+  font-weight: 600;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.input.error {
+  border-color: rgb(128, 7, 7);
+  border-width: 2px;
+}
