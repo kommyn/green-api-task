@@ -4,13 +4,13 @@ import type { IUser, StateInstance } from "./types";
 import { signIn } from "../api/http";
 
 export interface IUserState {
-  user: IUser | null;
+  data: IUser | null;
   loading: boolean;
   error?: string;
 }
 
 const initialState: IUserState = {
-  user: null,
+  data: null,
   loading: false,
   error: undefined,
 };
@@ -28,7 +28,7 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(signInThunk.pending, (state) => {
-      state.user = null;
+      state.data = null;
       state.loading = true;
       state.error = undefined;
     });
@@ -36,7 +36,7 @@ export const userSlice = createSlice({
       state.loading = false;
       switch (action.payload.stateInstance) {
         case "authorized":
-          state.user = action.meta.arg;
+          state.data = action.meta.arg;
           break;
         case "blocked":
           state.error = "Аккаунт заблокирован";

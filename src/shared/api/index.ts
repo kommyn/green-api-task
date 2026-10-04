@@ -1,2 +1,2 @@
 export * from "./http";
-export * from "./rtkApi";
+export * from "./rtk";

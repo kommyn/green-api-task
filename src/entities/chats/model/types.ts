@@ -2,6 +2,6 @@ export interface IChat {
   chatId: string;
   name: string;
   phoneNumber: number;
-  type: string;
+  type: "user" | "group" | "supergroup" | "channel";
   username: string;
 }

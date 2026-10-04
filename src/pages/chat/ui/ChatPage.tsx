@@ -4,8 +4,7 @@ import { useParams } from "react-router";
 import styles from "./ChatPage.module.css";
 
 const ChatPage: FC = () => {
-  const rar = useParams();
-  console.log("rar: ", rar);
+  const { chat_id: chatId } = useParams();
 
   return (
     <div className={styles.container}>

@@ -10,6 +10,7 @@
   width: 20%;
   min-width: 250px;
   min-height: 0;
+  position: relative;
 }
 
 .panel {
@@ -29,6 +30,25 @@
   text-align: center;
 }
 
+.loader_wrapper {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 1px solid #ffffff1a;
+  background-color: #25262d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader_wrapper .loader {
+  width: 80%;
+  border-color:#08090f transparent;
+}
+
 .chats_wrapper {
   height: 100%;
   overflow-y: scroll;
@@ -40,7 +60,22 @@
   color: #fff;
   padding: 4px 8px;
   height: 90px;
+  cursor: pointer;
 }
 .chat_item:last-child {
   border-bottom: none;
+}
+
+.chat_item p {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.chat_item p.primary_info {
+  font-size: 1rem;
+}
+
+.chat_item p.secondary_info {
+  font-size: 0.75rem;
 }
