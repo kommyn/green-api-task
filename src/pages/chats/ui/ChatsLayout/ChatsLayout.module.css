@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  background-image: url("../../../../assets/images/topography.svg");
+  grid-template-columns: auto 1fr;
+  height: 100%;
+}
+
+.panel_wrapper {
+  padding: 0.5rem;
+  width: 20%;
+  min-width: 250px;
+  min-height: 0;
+}
+
+.panel {
+  padding: 4px 0;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid #ffffff1a;
+  border-radius: 6px;
+  background-color: #17181c;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel_title {
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+}
+
+.chats_wrapper {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
+}
+
+.chat_item {
+  border-bottom: 1px solid #ffffff1a;
+  color: #fff;
+  padding: 4px 8px;
+  height: 90px;
+}
+.chat_item:last-child {
+  border-bottom: none;
+}

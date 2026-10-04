@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { Navigate } from "react-router";
 
-import { AuthContext } from "@entities/auth/model";
+import { useAppSelector } from "@shared/lib";
 
 export default function HomeRedirect() {
-  const { idInstance } = useContext(AuthContext);
+  const user = useAppSelector((state) => state.user);
 
-  return <Navigate to={idInstance ? "/main" : "/sign-in"} replace />;
+  return <Navigate to={user ? "/main" : "/sign-in"} replace />;
 }

@@ -1,0 +1,10 @@
+.container {
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.chat_wrapper {
+  border: 1px solid #ffffff1a;
+  border-radius: 8px;
+  background-color: #17181c;
+}

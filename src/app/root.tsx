@@ -6,9 +6,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 import type { Route } from "../+types/root";
-import { AuthContextProvider } from "@entities/auth/model";
+import { persistor, store } from "./model/store";
 import "./app.css";
 
 export function meta() {
@@ -38,9 +40,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <AuthContextProvider>
-      <Outlet />
-    </AuthContextProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Outlet />
+      </PersistGate>
+    </Provider>
   );
 }
 

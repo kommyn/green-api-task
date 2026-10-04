@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { Navigate, Outlet } from "react-router";
 
-import { AuthContext } from "@entities/auth/model";
+import { useAppSelector } from "@shared/lib";
 
 export default function AuthLayout() {
-  const authContext = useContext(AuthContext);
+  const user = useAppSelector((state) => state.user.user);
 
-  if (authContext.idInstance) {
+  if (user) {
     return <Navigate to="/chats" replace />;
   }
 
