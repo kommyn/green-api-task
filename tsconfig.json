@@ -22,6 +22,7 @@
       "@features/*": ["features/*"],
       "@entities/*": ["entities/*"],
       "@shared/*": ["shared/*"],
+      "@assets/*": ["assets/*"],
       "~/*": ["./*"]
     },
     "esModuleInterop": true,

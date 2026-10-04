@@ -1,10 +1,43 @@
 .container {
   padding: 0.5rem;
   height: 100%;
+  min-height: 0;
 }
 
 .chat_wrapper {
   border: 1px solid #ffffff1a;
   border-radius: 8px;
   background-color: #17181c;
+  padding: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat_title {
+  text-align: center;
+}
+
+.chat_messages {
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+.chat_controls {
+  display: flex;
+  justify-self:end;
+  height: 60px;
+}
+
+.chat_send_wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 40px;
+}
+
+.chat_send_button {
+  width: 30px;
+  cursor: pointer;
 }
