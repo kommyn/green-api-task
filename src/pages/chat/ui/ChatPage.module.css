@@ -19,14 +19,9 @@
   text-align: center;
 }
 
-.chat_messages {
-  overflow-y: scroll;
-  flex-grow: 1;
-}
-
 .chat_controls {
   display: flex;
-  justify-self:end;
+  justify-self: end;
   height: 60px;
 }
 
@@ -40,4 +35,34 @@
 .chat_send_button {
   width: 30px;
   cursor: pointer;
+  filter: invert(0.5);
+}
+
+
+.chat_messages {
+  overflow-y: scroll;
+  flex-grow: 1;
+  display: flex;flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  scrollbar-gutter: stable both-sides;
+}
+
+.message {
+  border: 1px solid #ffffff1a;
+  border-radius: 8px;
+  padding: 2px 8px;
+  width: max-content;
+  text-wrap: wrap;
+  word-break: break-all;
+  width: fit-content;
+}
+
+.message.incoming {
+  background-color: #25262d;
+}
+
+.message.outgoing {
+  align-self: flex-end;
+  background-color: #2d3361;
 }
