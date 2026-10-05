@@ -7,5 +7,6 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: env.apiBase,
   }),
+  tagTypes: ["Chats", "Messages"],
   endpoints: () => ({}),
 });

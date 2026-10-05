@@ -20,15 +20,5 @@ export const useGetLastChatMessages = ({
           chatId: chatId,
         }
       : skipToken,
-    {
-      selectFromResult: ({ data, ...rest }) => ({
-        messages:
-          data &&
-          data
-            .filter((message) => message.typeMessage === "textMessage")
-            .reverse(),
-        ...rest,
-      }),
-    },
   );
 };

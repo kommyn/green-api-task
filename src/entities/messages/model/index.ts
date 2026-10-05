@@ -1,1 +1,2 @@
-export type { IChatMessage } from "./types";
+export type { IChatMessage, IIncomingTextMessage } from "./types";
+export * from "./slice";

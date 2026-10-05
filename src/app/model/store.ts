@@ -14,6 +14,7 @@ import storage from "redux-persist/lib/storage";
 import { baseApi } from "@shared/api";
 import { userSlice } from "@entities/user/model";
 import { chatsSlice } from "@entities/chats/model";
+import { messagesSlice } from "@entities/messages/model";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
   [userSlice.name]: userSlice.reducer,
   [chatsSlice.name]: chatsSlice.reducer,
+  [messagesSlice.name]: messagesSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
