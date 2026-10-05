@@ -17,7 +17,7 @@ import { chatsSlice } from "@entities/chats/model";
 
 const persistConfig = {
   key: "root",
-  // @ts-ignore
+  // @ts-expect-error: Incorrect import goes from redux-persist itself
   storage: storage.default,
   whitelist: ["user", "chats"],
 };

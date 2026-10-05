@@ -23,4 +23,11 @@ export const chatsSlice = createSlice({
       },
     );
   },
+  selectors: {
+    selectChats: (state) => state.items,
+    selectChatById: (state, chatId?: string) =>
+      state.items.find((chat) => chat.chatId === chatId),
+  },
 });
+
+export const { selectChats, selectChatById } = chatsSlice.selectors;

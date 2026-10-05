@@ -1,11 +1,15 @@
 import type { FC } from "react";
 import { useForm } from "react-hook-form";
 
-import styles from "./index.module.css";
+import styles from "./SignInForm.module.css";
 import Input from "@shared/ui/Input";
 import Button from "@shared/ui/Button";
 import { useAppDispatch, useAppSelector } from "@shared/lib";
-import { signInThunk } from "@entities/user/model";
+import {
+  selectUserError,
+  selectUserLoading,
+  signInThunk,
+} from "@entities/user/model";
 
 type Inputs = {
   idInstance: string;
@@ -13,8 +17,8 @@ type Inputs = {
 };
 
 const SignInForm: FC = () => {
-  const loading = useAppSelector((state) => state.user.loading);
-  const error = useAppSelector((state) => state.user.error);
+  const loading = useAppSelector(selectUserLoading);
+  const error = useAppSelector(selectUserError);
 
   const dispatch = useAppDispatch();
 
@@ -30,25 +34,25 @@ const SignInForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <p className={styles.form_title}>Sign In</p>
-      <label className={styles.label}>
+      <p className={styles.formTitle}>Sign In</p>
+      <label className={styles.formLabel}>
         <Input
           {...register("idInstance", { required: true })}
           placeholder="Instance ID"
           error={!!errors.idInstance}
         />
       </label>
-      <label className={styles.label}>
+      <label className={styles.formLabel}>
         <Input
           {...register("apiTokenInstance", { required: true })}
           placeholder="API Token"
           error={!!errors.apiTokenInstance}
         />
       </label>
-      <div className={styles.form_error_wrapper}>
-        <p className={styles.form_error}>{error}</p>
+      <div className={styles.formErrorWrapper}>
+        <p className={styles.formError}>{error}</p>
       </div>
-      <Button className={styles.button} disabled={loading}>
+      <Button className={styles.formButton} disabled={loading}>
         Войти
       </Button>
     </form>

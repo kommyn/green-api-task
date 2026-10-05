@@ -1,0 +1,24 @@
+.chatItem {
+  border-bottom: 1px solid #ffffff1a;
+  color: #fff;
+  padding: 4px 8px;
+  height: 90px;
+  cursor: pointer;
+}
+.chatItem:last-child {
+  border-bottom: none;
+}
+
+.chatItem p {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.chatItem p.primary {
+  font-size: 1rem;
+}
+
+.chatItem p.secondary {
+  font-size: 0.75rem;
+}

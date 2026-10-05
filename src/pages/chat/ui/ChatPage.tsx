@@ -1,63 +1,44 @@
-import { useMemo, type FC } from "react";
+import { useState, type FC } from "react";
 import { useParams } from "react-router";
 
-import { env } from "@shared/config";
+import styles from "./ChatPage.module.css";
+import { useGetLastChatMessages } from "../lib";
+import Message from "./Message";
 import { useAppSelector } from "@shared/lib";
 import TextArea from "@shared/ui/TextArea";
+import { useSendMessageMutation } from "@entities/messages/api";
+import { selectChatById } from "@entities/chats/model";
+import { selectUser } from "@entities/user/model";
 import PlayIcon from "@assets/icons/play-solid-full.svg";
-import { useGetLastChatMessagesQuery } from "@entities/messages/api";
-import styles from "./ChatPage.module.css";
-import Message from "./Message";
 
 const ChatPage: FC = () => {
-  const { chat_id: chatId } = useParams();
+  const { chatId } = useParams();
 
-  const chatData = useAppSelector((state) =>
-    state.chats.items.find((chat) => chat.chatId === chatId),
-  );
-  const user = useAppSelector((state) => state.user.data);
+  const [messageText, setMessageText] = useState("");
 
-  const { data } = useGetLastChatMessagesQuery(
-    {
-      id: user?.idInstance || "",
-      token: user?.apiTokenInstance || "",
-      chatId: chatId || "",
-    },
-    {
-      skip: !user || !chatId,
-    },
-  );
+  const chatData = useAppSelector((state) => selectChatById(state, chatId));
+  const user = useAppSelector(selectUser);
 
-  const processedMessages = useMemo(() => {
-    if (!data) return [];
+  const { messages } = useGetLastChatMessages({ user, chatId });
+  const [sendMessage, { isLoading }] = useSendMessageMutation();
 
-    return data
-      .filter((message) => message.typeMessage === "textMessage")
-      .reverse();
-  }, [data]);
+  const handleMessageSend = async () => {
+    if (!(user && chatId && messageText)) return;
 
-  console.log("processedMessages: ", processedMessages);
-
-  const sendMessage = async () => {
-    if (!user) return;
-    fetch(
-      `${env.apiBase}/waInstance${user.idInstance}/sendMessage/${user.apiTokenInstance}`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          chatId: chatId,
-          message: "Hello there",
-        }),
-      },
-    );
+    return sendMessage({
+      idInstance: user.idInstance,
+      apiTokenInstance: user.apiTokenInstance,
+      message: messageText,
+      chatId,
+    });
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.chat_wrapper}>
-        <p className={styles.chat_title}>Чат с {chatData?.name}</p>
-        <div className={styles.chat_messages}>
-          {processedMessages.map((message) => (
+      <div className={styles.chatWrapper}>
+        <p className={styles.chatTitle}>Чат с {chatData?.name}</p>
+        <div className={styles.chatMessages}>
+          {(messages || []).map((message) => (
             <Message
               key={message.idMessage}
               text={message.textMessage}
@@ -65,13 +46,18 @@ const ChatPage: FC = () => {
             />
           ))}
         </div>
-        <div className={styles.chat_controls}>
-          <TextArea maxLength={300} />
-          <div className={styles.chat_send_wrapper}>
+        <div className={styles.chatControls}>
+          <TextArea
+            maxLength={300}
+            value={messageText}
+            onChange={(event) => setMessageText(event.target.value)}
+          />
+          <div className={styles.chatButtonWrapper}>
             <button
               type="button"
-              className={styles.chat_send_button}
-              onClick={sendMessage}
+              className={styles.chatButton}
+              onClick={handleMessageSend}
+              disabled={!messageText || isLoading}
             >
               <img src={PlayIcon} alt="" />
             </button>

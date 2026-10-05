@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
 const EmptyChatPage: FC = () => {
-  return <div></div>;
+  return null;
 };
 
 export default EmptyChatPage;

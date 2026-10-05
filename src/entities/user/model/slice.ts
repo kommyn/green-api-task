@@ -62,4 +62,12 @@ export const userSlice = createSlice({
       state.error = "Инстанс не найден";
     });
   },
+  selectors: {
+    selectUser: (state) => state.data,
+    selectUserLoading: (state) => state.loading,
+    selectUserError: (state) => state.error,
+  },
 });
+
+export const { selectUser, selectUserError, selectUserLoading } =
+  userSlice.selectors;

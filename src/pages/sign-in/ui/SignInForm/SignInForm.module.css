@@ -1,13 +1,3 @@
-.container {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../../../assets/images/topography.svg");
-  background-color: #25262d;
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -19,16 +9,16 @@
   min-width: 600px;
 }
 
-.form_title {
+.formTitle {
   color: #fff;
   font-size: 24px;
 }
 
-.form_error_wrapper {
+.formErrorWrapper {
   position: relative;
 }
 
-.form_error {
+.formError {
   position: absolute;
   color: rgb(128, 7, 7);
   font-family: inherit;
@@ -37,7 +27,7 @@
   top: -0.5rem;
 }
 
-.label {
+.formLabel {
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -45,7 +35,7 @@
   font-weight: 600;
 }
 
-.button {
+.formButton {
   max-width: 200px;
   align-self: center;
 }

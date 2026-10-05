@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import clsx from "clsx";
 
-import styles from "./ChatPage.module.css";
+import styles from "./Message.module.css";
 
 export interface MessageProps {
   text: string;

@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
+import styles from "./ChatItem.module.css";
 import type { IChat } from "@entities/chats/model";
-import styles from "./ChatsLayout.module.css";
 
 export interface ChatItemProps {
   chat: IChat;
@@ -12,13 +12,13 @@ const ChatItem: FC<ChatItemProps> = ({ chat, onClick }) => {
   const handleClick = () => onClick && onClick(chat.chatId);
 
   return (
-    <div className={styles.chat_item} onClick={handleClick}>
-      <p className={styles.primary_info}>{chat.name}</p>
-      <p className={styles.secondary_info}>Тип юзера: {chat.type}</p>
-      <p className={styles.secondary_info}>
+    <div className={styles.chatItem} onClick={handleClick}>
+      <p className={styles.primary}>{chat.name}</p>
+      <p className={styles.secondary}>Тип юзера: {chat.type}</p>
+      <p className={styles.secondary}>
         Телефон: {chat.phoneNumber || "Не указан"}
       </p>
-      <p className={styles.secondary_info}>
+      <p className={styles.secondary}>
         Username: {chat.username || "Не указан"}
       </p>
     </div>

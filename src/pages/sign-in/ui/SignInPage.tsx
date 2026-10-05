@@ -1,5 +1,5 @@
-import styles from "./index.module.css";
-import SignInForm from "./SignInForm";
+import styles from "./SignInPage.module.css";
+import SignInForm from "../SignInForm";
 
 export default function SingInPage() {
   return (

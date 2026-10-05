@@ -5,20 +5,36 @@ export const messagesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getLastChatMessages: builder.query<
       IChatMessage[],
-      { id: string; token: string; minutes?: number; chatId: string }
+      { idInstance: string; apiTokenInstance: string; chatId: string }
     >({
-      query: ({ id, token, minutes, chatId }) => ({
-        // url: `/waInstance${id}/lastIncomingMessages/${token}`,
-        url: `/waInstance${id}/getChatHistory/${token}`,
+      query: ({ idInstance, apiTokenInstance, chatId }) => ({
+        url: `/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`,
         method: "POST",
         body: {
           chatId,
         },
-        // params: { minutes },
+      }),
+    }),
+    sendMessage: builder.mutation<
+      { messageId: string },
+      {
+        idInstance: string;
+        apiTokenInstance: string;
+        chatId: string;
+        message: string;
+      }
+    >({
+      query: ({ idInstance, apiTokenInstance, chatId, message }) => ({
+        url: `/waInstance${idInstance}/sendMessage/${apiTokenInstance}`,
+        method: "POST",
+        body: { chatId, message },
       }),
     }),
   }),
 });
 
-export const { useGetLastChatMessagesQuery, useLazyGetLastChatMessagesQuery } =
-  messagesApi;
+export const {
+  useGetLastChatMessagesQuery,
+  useLazyGetLastChatMessagesQuery,
+  useSendMessageMutation,
+} = messagesApi;
