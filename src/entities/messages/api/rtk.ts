@@ -71,6 +71,7 @@ export const messagesApi = baseApi.injectEndpoints({
       {
         idInstance: string;
         apiTokenInstance: string;
+        usePhone?: boolean;
         receiveTimeout?: number;
       }
     >({
@@ -102,7 +103,9 @@ export const messagesApi = baseApi.injectEndpoints({
                   {
                     idInstance: arg.idInstance,
                     apiTokenInstance: arg.apiTokenInstance,
-                    chatId: data.body.senderData.chatId,
+                    chatId: arg.usePhone
+                      ? data.body.senderData.senderPhoneNumber + "@c.us"
+                      : data.body.senderData.chatId,
                   },
                   (draft) => {
                     const exists = draft.some(

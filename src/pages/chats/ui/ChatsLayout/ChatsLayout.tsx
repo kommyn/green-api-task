@@ -1,15 +1,21 @@
+import { useState } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router";
 import { skipToken } from "@reduxjs/toolkit/query";
 
-import styles from "./ChatsLayout.module.css";
-import ChatItem from "./ChatItem";
 import { useAppSelector } from "@shared/lib";
 import Loader from "@shared/ui/Loader";
+import Button from "@shared/ui/Button";
 import { useGetChatsQuery } from "@entities/chats/api";
 import { selectUser } from "@entities/user/model";
 import { selectChats } from "@entities/chats/model";
 
+import styles from "./ChatsLayout.module.css";
+import ChatItem from "./ChatItem";
+import CreateChatModal from "./CreateChatModal";
+
 export default function ChatsLayout() {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const user = useAppSelector(selectUser);
   const chats = useAppSelector(selectChats);
 
@@ -21,6 +27,14 @@ export default function ChatsLayout() {
 
   const handleChatClick = (chatId: string) => {
     navigate(`/chats/${chatId}`);
+  };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   if (!user) {
@@ -41,6 +55,7 @@ export default function ChatsLayout() {
               />
             ))}
           </div>
+          <Button onClick={handleModalOpen}>Создать чат</Button>
         </div>
         {isFetching && (
           <div className={styles.loaderWrapper}>
@@ -49,6 +64,7 @@ export default function ChatsLayout() {
         )}
       </div>
       <Outlet />
+      <CreateChatModal isOpen={isModalOpen} onClose={handleModalClose} />
     </div>
   );
 }

@@ -52,7 +52,7 @@ const SignInForm: FC = () => {
       <div className={styles.formErrorWrapper}>
         <p className={styles.formError}>{error}</p>
       </div>
-      <Button className={styles.formButton} disabled={loading}>
+      <Button className={styles.formButton} disabled={loading} type="submit">
         Войти
       </Button>
     </form>

@@ -13,7 +13,7 @@ const Button: FC<ButtonProps> = ({
   ...props
 }: ButtonProps) => {
   return (
-    <button className={clsx(styles.button, className)} {...props}>
+    <button className={clsx(styles.button, className)} type="button" {...props}>
       {children}
     </button>
   );

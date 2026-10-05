@@ -27,7 +27,7 @@ const ChatPage: FC = () => {
   const dispatch = useAppDispatch();
 
   const { data: historyMessages } = useGetLastChatMessages({ user, chatId });
-  useReceiveNotification({ user });
+  useReceiveNotification({ user, usePhone: !!chatId?.match(/.*@c\.us/g) });
   const [sendMessage, { isLoading }] = useSendMessageMutation();
 
   const handleMessageSend = async () => {
@@ -55,7 +55,7 @@ const ChatPage: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.chatWrapper}>
-        <p className={styles.chatTitle}>Чат с {chatData?.name}</p>
+        <p className={styles.chatTitle}>Чат с {chatData?.name || chatId}</p>
         <div className={styles.chatMessages} ref={chatMessagesRef}>
           {(messages || []).map((message) => (
             <Message
