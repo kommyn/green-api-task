@@ -1,7 +1,8 @@
 import type { FC } from "react";
 
-import styles from "./ChatItem.module.css";
 import type { IChat } from "@entities/chats/model";
+
+import styles from "./ChatItem.module.css";
 
 export interface ChatItemProps {
   chat: IChat;

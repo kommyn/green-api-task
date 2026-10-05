@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState, type FC } from "react";
 import { useParams } from "react-router";
 
-import styles from "./ChatPage.module.css";
-import { useGetLastChatMessages, useReceiveNotification } from "../lib";
-import Message from "./Message";
+import PlayIcon from "@assets/icons/play-solid-full.svg";
 import { useAppDispatch, useAppSelector } from "@shared/lib";
 import TextArea from "@shared/ui/TextArea";
 import { useSendMessageMutation } from "@entities/messages/api";
 import { selectChatById } from "@entities/chats/model";
 import { selectUser } from "@entities/user/model";
 import { selectMessages, setMessages } from "@entities/messages/model";
-import PlayIcon from "@assets/icons/play-solid-full.svg";
+
+import styles from "./ChatPage.module.css";
+import { useGetLastChatMessages, useReceiveNotification } from "../lib";
+import Message from "./Message";
 
 const ChatPage: FC = () => {
   const { chatId } = useParams();

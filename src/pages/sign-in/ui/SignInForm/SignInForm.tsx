@@ -1,15 +1,16 @@
 import type { FC } from "react";
 import { useForm } from "react-hook-form";
 
-import styles from "./SignInForm.module.css";
-import Input from "@shared/ui/Input";
 import Button from "@shared/ui/Button";
+import Input from "@shared/ui/Input";
 import { useAppDispatch, useAppSelector } from "@shared/lib";
 import {
   selectUserError,
   selectUserLoading,
   signInThunk,
 } from "@entities/user/model";
+
+import styles from "./SignInForm.module.css";
 
 type Inputs = {
   idInstance: string;
